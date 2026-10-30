@@ -1,103 +1,146 @@
-# Task 4: Object Detection and Tracking
+# 🚀 Real-Time Object Detection and Tracking
 
-A real-time object detection and multi-object tracking application built with **Python, OpenCV, YOLOv8, and ByteTrack**.
+A Python-based real-time object detection and tracking system using **YOLOv8, OpenCV, and ByteTrack**. This project detects multiple objects in live webcam streams or video files, draws bounding boxes, assigns tracking IDs, and displays object information in real time.
 
-## Features
-- Webcam input or prerecorded video input
-- Pretrained YOLOv8 Nano object detector
-- ByteTrack tracking with persistent IDs across frames
-- Bounding boxes, class labels, confidence scores, object count, and FPS
-- Optional saving of the annotated output video
-- Simple command-line configuration
+## 📌 Project Overview
 
-## 1. Requirements
-- Python 3.9–3.12 (recommended)
-- Webcam for live mode, or an MP4/AVI video file
-- Internet connection on the first run to download YOLO weights
+The main objective of this project is to detect and track objects in video frames using a pretrained deep-learning model.
 
-## 2. Installation
+The system identifies objects, displays their names, tracks their movement across frames, and provides unique tracking IDs.
 
-Open a terminal in this project folder.
+## ✨ Features
 
-```bash
-python -m venv .venv
-```
+- Real-time object detection using YOLOv8.
+- Webcam and video-file input support.
+- Multi-object tracking using ByteTrack.
+- Bounding boxes around detected objects.
+- Object names and tracking IDs.
+- Detection confidence scores.
+- Real-time FPS display.
+- Automatic output video saving.
 
-Activate the environment:
+## 🛠️ Technologies Used
 
-**Windows**
-```bash
-.venv\Scripts\activate
-```
+| Technology | Purpose |
+|---|---|
+| Python 3.12 | Programming language |
+| OpenCV | Video processing and webcam access |
+| YOLOv8 | Object detection |
+| ByteTrack | Object tracking |
+| Ultralytics | YOLO model implementation |
 
-**macOS / Linux**
-```bash
-source .venv/bin/activate
-```
+## 📂 Project Structure
 
-Install dependencies:
-
-```bash
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-```
-
-## 3. Run the project
-
-**Webcam (default camera 0):**
-```bash
-python main.py
-```
-
-**Video file:**
-```bash
-python main.py --source input.mp4
-```
-
-**Use a different webcam:**
-```bash
-python main.py --source 1
-```
-
-**Adjust confidence threshold and model:**
-```bash
-python main.py --source input.mp4 --conf 0.45 --model yolov8s.pt
-```
-
-**Run without saving an output video:**
-```bash
-python main.py --source 0 --no-save
-```
-
-Press **Q** or **Esc** in the video window to stop.
-
-## 4. Output
-By default, the annotated video is saved to:
-
-`output/tracked_output.mp4`
-
-The first execution downloads `yolov8n.pt` automatically. Keep an internet connection available for this initial download.
-
-## 5. How it works
-1. OpenCV reads frames from the webcam or video file.
-2. YOLOv8 predicts object classes, bounding boxes, and confidence scores.
-3. ByteTrack associates detections across consecutive frames and assigns tracking IDs.
-4. OpenCV draws each bounding box and its class, ID, and confidence on the frame.
-5. The application displays the processed frame and optionally writes it to an MP4 file.
-
-## Troubleshooting
-- **Camera not opening:** Close other applications using the webcam; try `--source 1`.
-- **Video not found:** Put the video in this folder and pass its correct filename.
-- **Slow performance:** Use the default `yolov8n.pt`, lower camera resolution, or use a smaller input video.
-- **Window does not appear:** Run the script on a desktop session with GUI support; `cv2.imshow` does not work in many headless environments.
-- **First run takes time:** YOLO model weights are downloaded once and cached.
-
-## Project structure
 ```text
-object_detection_tracking_project/
+Object-Detection-and-Tracking/
+│
 ├── main.py
 ├── requirements.txt
 ├── README.md
 ├── PROJECT_REPORT.md
+│
 └── output/
+    └── tracked_output.mp4
 ```
+
+## ⚙️ Installation
+
+**Step 1: Clone the repository**
+
+```bash
+git clone https://github.com/YOUR_USERNAME/Object-Detection-and-Tracking.git
+```
+
+**Step 2: Navigate to the project directory**
+
+```bash
+cd Object-Detection-and-Tracking
+```
+
+**Step 3: Install the required libraries**
+
+```bash
+pip install -r requirements.txt
+```
+
+## ▶️ How to Run
+
+**Run using webcam:**
+
+```bash
+python main.py
+```
+
+**Run using a video file:**
+
+```bash
+python main.py --source input.mp4
+```
+
+**Change confidence threshold:**
+
+```bash
+python main.py --conf 0.5
+```
+
+**Run without saving output:**
+
+```bash
+python main.py --no-save
+```
+
+Press `Q` or `ESC` to stop the application.
+
+## 📊 Expected Output
+
+The application displays:
+
+- Detected object names.
+- Bounding boxes around objects.
+- Unique tracking IDs.
+- Confidence scores.
+- Number of detected objects.
+- Frames per second (FPS).
+
+The processed video is automatically saved in the `output` folder as:
+
+`tracked_output.mp4`
+
+## 🧠 Working Methodology
+
+1. Capture video frames using OpenCV.
+2. Pass each frame to the pretrained YOLOv8 model.
+3. Detect objects and obtain bounding boxes.
+4. Use ByteTrack to associate objects across consecutive frames.
+5. Assign tracking IDs to detected objects.
+6. Draw bounding boxes, labels, and IDs.
+7. Display and save the processed video.
+
+## ⚠️ Limitations
+
+- Detection accuracy depends on lighting and video quality.
+- Objects outside the model's trained categories may be misclassified.
+- Tracking IDs may change when objects are heavily occluded.
+- Performance depends on available CPU/GPU resources.
+
+## 🔮 Future Improvements
+
+- Train a custom YOLO model for additional object classes.
+- Improve detection accuracy.
+- Add object counting and movement analysis.
+- Build a graphical user interface.
+- Support multiple camera inputs.
+
+## 🎯 Conclusion
+
+This project demonstrates real-time object detection and multi-object tracking using YOLOv8, OpenCV, and ByteTrack. It provides a practical implementation of computer vision techniques for identifying and tracking multiple objects in video streams.
+
+## 👨‍💻 Author
+
+**Shaik Imdadulla**
+
+GitHub: https://github.com/Sabeel-18
+
+---
+
+⭐ If you find this project useful, consider giving it a star!v
