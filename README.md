@@ -137,7 +137,7 @@ This project demonstrates real-time object detection and multi-object tracking u
 
 ## 👨‍💻 Author
 
-**Shaik Imdadulla**
+**S Sabeel**
 
 GitHub: https://github.com/Sabeel-18
 
